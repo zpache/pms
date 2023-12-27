@@ -15,6 +15,8 @@
 	<description>pms</description>
 	<properties>
 		<java.version>17</java.version>
+		<fastjson.version>2.0.41</fastjson.version>
+		<google.guava.version>32.1.3-jre</google.guava.version>
 		<commons-lang3.version>3.13.0</commons-lang3.version>
 		<mybatis-plus.starter.version>3.5.4.1</mybatis-plus.starter.version>
 		<transmittable.thread.version>2.14.5</transmittable.thread.version>
@@ -38,6 +40,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 		</dependency>
@@ -48,6 +55,17 @@
 			<version>${commons-lang3.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${google.guava.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
