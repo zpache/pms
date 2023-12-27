@@ -5,10 +5,17 @@ import com.zpache.pms.common.constant.ResultConstant;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2023/12/27 11:11
  */
 public class ResultUtils {
+
+    public static <T> PmsResult<T> success() {
+        PmsResult<T> tPmsResult = new PmsResult<>();
+        tPmsResult.setCode(ResultConstant.SUCCESS);
+        tPmsResult.setMessage(ResultConstant.SUCCESS_MESSAGE);
+        return tPmsResult;
+    }
 
     public static <T> PmsResult<T> success(T data) {
         PmsResult<T> tPmsResult = new PmsResult<>();

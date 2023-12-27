@@ -2,7 +2,7 @@ package com.zpache.pms.common.exception;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2023/12/27 11:04
  */
 public class ServiceException extends RuntimeException {

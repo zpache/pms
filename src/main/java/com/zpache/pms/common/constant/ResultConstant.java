@@ -2,7 +2,7 @@ package com.zpache.pms.common.constant;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2023/12/27 11:08
  */
 public class ResultConstant {

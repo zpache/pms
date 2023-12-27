@@ -9,7 +9,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2023/12/27 10:46
  */
 @Configuration

@@ -2,7 +2,7 @@ package com.zpache.pms.common.base;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2023/12/27 11:07
  */
 public class PmsResult<T> {

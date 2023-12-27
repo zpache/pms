@@ -2,7 +2,7 @@ package com.zpache.pms.common.exception;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2023/12/27 10:56
  */
 public class AuthException extends RuntimeException {
