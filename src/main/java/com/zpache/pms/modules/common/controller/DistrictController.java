@@ -6,6 +6,7 @@ import com.zpache.pms.common.utils.ResultUtils;
 import com.zpache.pms.modules.common.form.DistrictForm;
 import com.zpache.pms.modules.common.service.DistrictService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DistrictController {
     private final DistrictService districtService;
 
+    @PostMapping("/list")
     public PmsResult list(@RequestBody DistrictForm districtForm) {
         if (districtForm.getDistrictLevel() == null && districtForm.getParentId() == null) {
             throw new ServiceException("行政区划等级和上级区域ID不可同时为空");
