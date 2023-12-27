@@ -14,8 +14,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @TableName("sys_tenant")
 public class SysTenant extends BaseEntity {
-
+    private String tenantId;
     private String tenantCode;
     private String tenantName;
     private String tenantDesc;
+    private Integer status;
+    private String relationName;
 }

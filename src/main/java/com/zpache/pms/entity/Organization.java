@@ -14,6 +14,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @TableName("organization")
 public class Organization extends BaseEntity {
+    private String tenantId;
     private String orgName;
     private String orgCode;
     private Long parentId;

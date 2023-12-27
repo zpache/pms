@@ -1,16 +1,20 @@
 package com.zpache.pms.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zpache.pms.common.base.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @desc:
  * @author: zpache
  * @createTime: 2023/12/26 16:45
  */
-@TableName("sys_user")
 @Data
-public class SysUser {
+@EqualsAndHashCode(callSuper = true)
+@TableName("sys_user")
+public class SysUser extends BaseEntity {
+    private String tenantId;
     private String loginName;
     private String password;
     private String salt;

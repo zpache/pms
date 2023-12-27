@@ -23,3 +23,4 @@
 - 数据库连接池：Druid
 - 缓存框架：Redis
 - 前端框架：Vue、element-ui（脚手架：vue-element-template）
+- 其他：transmittable-thread-local、fastjson、lombok

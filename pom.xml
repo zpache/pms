@@ -15,7 +15,9 @@
 	<description>pms</description>
 	<properties>
 		<java.version>17</java.version>
+		<commons-lang3.version>3.13.0</commons-lang3.version>
 		<mybatis-plus.starter.version>3.5.4.1</mybatis-plus.starter.version>
+		<transmittable.thread.version>2.14.5</transmittable.thread.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -30,8 +32,20 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>transmittable-thread-local</artifactId>
+			<version>${transmittable.thread.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
 		</dependency>
 
 
@@ -40,17 +54,14 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter-test</artifactId>
-			<version>3.0.3</version>
-			<scope>test</scope>
-		</dependency>
+
+
 	</dependencies>
 
 	<build>
