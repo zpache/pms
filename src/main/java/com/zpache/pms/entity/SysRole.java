@@ -8,12 +8,10 @@ import lombok.EqualsAndHashCode;
 /**
  * @desc:
  * @author: zpache
- * @createTime: 2023/12/28 09:27
+ * @createTime: 2023/12/28 09:35
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("sys_role_menu")
-public class SysRoleMenu extends BaseEntity {
-    private Long roleId;
-    private Long menuId;
+@TableName("sys_role")
+public class SysRole extends BaseEntity {
 }
