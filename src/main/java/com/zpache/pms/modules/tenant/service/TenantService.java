@@ -21,4 +21,6 @@ public interface TenantService {
     SysTenant add(SysTenant sysTenant);
 
     SysTenant update(SysTenant sysTenant);
+
+    void delete(Long id);
 }

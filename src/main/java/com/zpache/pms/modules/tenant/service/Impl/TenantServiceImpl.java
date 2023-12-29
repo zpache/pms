@@ -67,4 +67,10 @@ public class TenantServiceImpl implements TenantService {
         }
         return getById(sysTenant.getId());
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void delete(Long id) {
+        sysTenantMapper.deleteById(id);
+    }
 }
