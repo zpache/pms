@@ -15,7 +15,8 @@ import lombok.EqualsAndHashCode;
 @TableName("sys_user")
 public class SysUser extends BaseEntity {
     private String tenantId;
-    private String loginName;
+    private String userId;
+    private String loginAccount;
     private String password;
     private String salt;
     private String name;
@@ -23,6 +24,8 @@ public class SysUser extends BaseEntity {
     private String mobile;
     private String status;
     private String avatar;
-    private String deptId;
-    private String deptName;
+    private String orgId;
+    private String orgCode;
+    private String workNo;
+    private String remark;
 }
