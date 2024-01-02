@@ -14,6 +14,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @TableName("sys_role")
 public class SysRole extends BaseEntity {
+    private String tenantId;
     private String roleName;
+    private Integer roleType;
+    private Integer status;
     private String remark;
 }
