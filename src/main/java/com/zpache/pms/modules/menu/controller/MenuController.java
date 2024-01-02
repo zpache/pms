@@ -31,6 +31,11 @@ public class MenuController {
         return ResultUtils.success(menuService.save(menuForm));
     }
 
+    @PostMapping("/detail")
+    public PmsResult detail(@RequestBody MenuForm menuForm) {
+        return ResultUtils.success(menuService.getById(menuForm.getId()));
+    }
+
     @PostMapping("/delete")
     public PmsResult delete(@RequestBody MenuForm menuForm) {
         menuService.delete(menuForm.getId());

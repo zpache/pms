@@ -5,7 +5,7 @@ import com.zpache.pms.entity.SysMenu;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2023/12/28 15:13
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {

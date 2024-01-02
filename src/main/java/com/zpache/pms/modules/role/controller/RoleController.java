@@ -26,6 +26,10 @@ public class RoleController {
         return ResultUtils.success(roleService.list(roleForm));
     }
 
+    @PostMapping("/detail")
+    public PmsResult detail(@RequestBody RoleForm roleForm) {
+        return ResultUtils.success(roleService.getById(roleForm.getId()));
+    }
 
     @PostMapping("/save")
     public PmsResult save(@RequestBody RoleForm roleForm) {

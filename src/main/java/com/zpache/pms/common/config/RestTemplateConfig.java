@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2024/1/2 09:47
  */
 @Configuration
