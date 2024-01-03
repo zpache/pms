@@ -2,6 +2,7 @@ package com.zpache.pms.modules.user.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zpache.pms.entity.SysUser;
+import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.form.UserForm;
 
 /**
@@ -24,4 +25,6 @@ public interface UserService {
     SysUser update(SysUser sysUser);
 
     void delete(Long id);
+
+    Object login(LoginForm loginForm);
 }

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zpache.pms.common.exception.ServiceException;
 import com.zpache.pms.entity.SysUser;
 import com.zpache.pms.mapper.SysUserMapper;
+import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.form.UserForm;
 import com.zpache.pms.modules.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -89,5 +90,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Long id) {
         sysUserMapper.deleteById(id);
+    }
+
+    @Override
+    public Object login(LoginForm loginForm) {
+        return null;
     }
 }
