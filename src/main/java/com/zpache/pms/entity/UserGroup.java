@@ -14,4 +14,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @TableName("user_group")
 public class UserGroup extends BaseEntity {
+
 }
