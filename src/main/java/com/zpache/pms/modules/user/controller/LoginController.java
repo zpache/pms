@@ -5,10 +5,7 @@ import com.zpache.pms.common.utils.ResultUtils;
 import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @desc:
@@ -17,12 +14,36 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/login")
+@RequestMapping("/api/platform")
 public class LoginController {
     private UserService userService;
 
-    @PostMapping
+    /**
+     * 登录
+     * @param loginForm 登录表单
+     * @return 返回结果
+     */
+    @PostMapping(value = "/login")
     public PmsResult login(@RequestBody LoginForm loginForm) {
         return ResultUtils.success(userService.login(loginForm));
+    }
+
+    /**
+     * 获取用户信息
+     * @param token 令牌
+     * @return 返回结果
+     */
+    @PostMapping(value = "/userInfo")
+    public PmsResult userInfo(@RequestParam("token") String token) {
+        return ResultUtils.success();
+    }
+
+    /**
+     * 登出
+     * @return 返回结果
+     */
+    @PostMapping(value = "/logout")
+    public PmsResult logout() {
+        return ResultUtils.success();
     }
 }
