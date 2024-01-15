@@ -2,6 +2,7 @@ package com.zpache.pms.modules.user.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zpache.pms.entity.SysUser;
+import com.zpache.pms.modules.user.dto.TokenDTO;
 import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.form.UserForm;
 
@@ -26,5 +27,5 @@ public interface UserService {
 
     void delete(Long id);
 
-    Object login(LoginForm loginForm);
+    TokenDTO login(LoginForm loginForm);
 }

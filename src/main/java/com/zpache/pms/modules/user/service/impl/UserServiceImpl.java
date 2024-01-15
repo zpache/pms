@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zpache.pms.common.exception.ServiceException;
 import com.zpache.pms.entity.SysUser;
 import com.zpache.pms.mapper.SysUserMapper;
+import com.zpache.pms.modules.user.dto.TokenDTO;
 import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.form.UserForm;
 import com.zpache.pms.modules.user.service.UserService;
@@ -93,7 +94,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Object login(LoginForm loginForm) {
+    public TokenDTO login(LoginForm loginForm) {
+
         return null;
     }
 }
