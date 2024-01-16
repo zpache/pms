@@ -37,6 +37,18 @@
 
 ## 安装
 
+### pms-ui 前端项目
+[pms-ui](https://github.com/zpache/pms-ui)
+
+### pms 后端项目
+```shell
+    # 打包
+    mvn clean package -Dmaven.test.skip=true
+    # 运行
+    java -jar pms-0.0.1-SNAPSHOT.jar
+```
+
+
 ## 技术选型
 
 - 核心框架：Spring Boot 3.0.9、Spring 6.0、jdk 17、MySQL 8.0+
