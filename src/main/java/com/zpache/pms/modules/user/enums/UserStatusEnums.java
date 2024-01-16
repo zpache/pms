@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * @desc:
- * @author: wangbing
+ * @author: zpache
  * @createTime: 2024/1/16 16:34
  */
 public enum UserStatusEnums {

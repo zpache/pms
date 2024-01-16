@@ -107,7 +107,7 @@ public class UserServiceImpl implements UserService {
                 .eq(SysUser::getLoginAccount, loginForm.getUsername()));
         if (sysUser == null) {
             throw new ServiceException("用户名或密码错误");
-        } else if (UserStatusEnums.NORMAL.status.equals(sysUser.getStatus())) {
+        } else if (!UserStatusEnums.NORMAL.status.equals(sysUser.getStatus())) {
             throw new ServiceException(String.format("当前账号已被%s", Objects.requireNonNull(UserStatusEnums.getEnumByStatus(sysUser.getStatus())).desc));
         }
         // 密码校验

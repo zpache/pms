@@ -1,6 +1,7 @@
 package com.zpache.pms.modules.user.controller;
 
 import com.zpache.pms.common.base.PmsResult;
+import com.zpache.pms.common.constant.PmsHeader;
 import com.zpache.pms.common.utils.ResultUtils;
 import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.service.UserService;
@@ -34,7 +35,8 @@ public class LoginController {
      * @return 返回结果
      */
     @PostMapping(value = "/userInfo")
-    public PmsResult userInfo(@RequestParam("token") String token) {
+    public PmsResult userInfo(@RequestHeader(PmsHeader.TOKEN) String token) {
+        System.out.println(token);
         return ResultUtils.success();
     }
 
