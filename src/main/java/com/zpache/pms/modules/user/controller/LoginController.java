@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/platform")
+@RequestMapping("/api/admin")
 public class LoginController {
-    private UserService userService;
+    private final UserService userService;
 
     /**
      * 登录

@@ -2,20 +2,27 @@ package com.zpache.pms.modules.user.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zpache.pms.common.constant.RedisKey;
 import com.zpache.pms.common.exception.ServiceException;
+import com.zpache.pms.common.utils.Md5Utils;
 import com.zpache.pms.entity.SysUser;
 import com.zpache.pms.mapper.SysUserMapper;
 import com.zpache.pms.modules.user.dto.TokenDTO;
+import com.zpache.pms.modules.user.enums.UserStatusEnums;
 import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.form.UserForm;
 import com.zpache.pms.modules.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
 import java.util.Random;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @desc:
@@ -26,6 +33,7 @@ import java.util.Random;
 @Service
 public class UserServiceImpl implements UserService {
     private final SysUserMapper sysUserMapper;
+    private final RedisTemplate redisTemplate;
 
     @Override
     public Page<SysUser> list(UserForm userForm) {
@@ -95,7 +103,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public TokenDTO login(LoginForm loginForm) {
-
-        return null;
+        SysUser sysUser = sysUserMapper.selectOne(Wrappers.lambdaQuery(SysUser.class)
+                .eq(SysUser::getLoginAccount, loginForm.getUsername()));
+        if (sysUser == null) {
+            throw new ServiceException("用户名或密码错误");
+        } else if (UserStatusEnums.NORMAL.status.equals(sysUser.getStatus())) {
+            throw new ServiceException(String.format("当前账号已被%s", Objects.requireNonNull(UserStatusEnums.getEnumByStatus(sysUser.getStatus())).desc));
+        }
+        // 密码校验
+        String password = String.format("%s%s%s", sysUser.getSalt(), loginForm.getPassword(), sysUser.getSalt());
+        if (!sysUser.getPassword().equals(Md5Utils.md5(password))) {
+            throw new ServiceException("用户名或密码错误");
+        }
+        // 生成token
+        String token = UUID.randomUUID().toString().replace("-", "");
+        redisTemplate.opsForValue().set(String.format(RedisKey.USER_TOKEN, token), sysUser, 7200L, TimeUnit.SECONDS);
+        return new TokenDTO(token);
     }
 }
