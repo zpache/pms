@@ -1,13 +1,16 @@
 package com.zpache.pms.modules.user.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.common.collect.Lists;
 import com.zpache.pms.common.constant.RedisKey;
 import com.zpache.pms.common.exception.ServiceException;
 import com.zpache.pms.common.utils.Md5Utils;
 import com.zpache.pms.entity.SysUser;
 import com.zpache.pms.mapper.SysUserMapper;
 import com.zpache.pms.modules.user.dto.TokenDTO;
+import com.zpache.pms.modules.user.dto.UserInfoDTO;
 import com.zpache.pms.modules.user.enums.UserStatusEnums;
 import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.form.UserForm;
@@ -117,7 +120,21 @@ public class UserServiceImpl implements UserService {
         }
         // 生成token
         String token = UUID.randomUUID().toString().replace("-", "");
-        redisTemplate.opsForValue().set(String.format(RedisKey.USER_TOKEN, token), sysUser, 7200L, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(String.format(RedisKey.USER_TOKEN, token), JSON.toJSONString(sysUser), 7200L, TimeUnit.SECONDS);
         return new TokenDTO(token);
+    }
+
+    @Override
+    public UserInfoDTO getUserInfo(Long id) {
+        SysUser sysUser = sysUserMapper.selectById(id);
+        if (sysUser == null) {
+            throw new ServiceException("用户不存在");
+        }
+        UserInfoDTO userInfo = new UserInfoDTO();
+        userInfo.setName(sysUser.getName());
+        userInfo.setAvatar(sysUser.getAvatar());
+        userInfo.setRoles(Lists.newArrayList("admin"));
+        userInfo.setIntroduction("I am a super administrator");
+        return userInfo;
     }
 }

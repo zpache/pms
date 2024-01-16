@@ -35,6 +35,7 @@ public class WebAppConfig implements WebMvcConfigurer {
     static {
         INCLUDE_PATHS.add("/api/**");
 
-        EXCLUDE_PATHS.add("/api/platform/**");
+        EXCLUDE_PATHS.add("/api/admin/login");
+        EXCLUDE_PATHS.add("/api/admin/logout");
     }
 }

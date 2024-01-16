@@ -1,6 +1,7 @@
 package com.zpache.pms.common.handler;
 
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
+import com.zpache.pms.common.utils.TenantContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.NullValue;

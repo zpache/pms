@@ -1,12 +1,16 @@
 package com.zpache.pms.modules.user.controller;
 
 import com.zpache.pms.common.base.PmsResult;
-import com.zpache.pms.common.constant.PmsHeader;
 import com.zpache.pms.common.utils.ResultUtils;
+import com.zpache.pms.common.utils.TenantContextHolder;
+import com.zpache.pms.modules.user.dto.UserInfoDTO;
 import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @desc:
@@ -31,13 +35,12 @@ public class LoginController {
 
     /**
      * 获取用户信息
-     * @param token 令牌
      * @return 返回结果
      */
     @PostMapping(value = "/userInfo")
-    public PmsResult userInfo(@RequestHeader(PmsHeader.TOKEN) String token) {
-        System.out.println(token);
-        return ResultUtils.success();
+    public PmsResult userInfo() {
+        UserInfoDTO userInfoDTO = userService.getUserInfo(TenantContextHolder.getUser().getId());
+        return ResultUtils.success(userInfoDTO);
     }
 
     /**
