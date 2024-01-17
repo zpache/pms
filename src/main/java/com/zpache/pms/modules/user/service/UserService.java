@@ -31,4 +31,6 @@ public interface UserService {
     TokenDTO login(LoginForm loginForm);
 
     UserInfoDTO getUserInfo(Long id);
+
+    void logout(String token);
 }

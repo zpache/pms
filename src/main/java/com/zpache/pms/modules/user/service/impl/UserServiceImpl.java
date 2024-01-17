@@ -137,4 +137,9 @@ public class UserServiceImpl implements UserService {
         userInfo.setIntroduction("I am a super administrator");
         return userInfo;
     }
+
+    @Override
+    public void logout(String token) {
+        redisTemplate.delete(String.format(RedisKey.USER_TOKEN, token));
+    }
 }

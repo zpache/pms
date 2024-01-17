@@ -1,16 +1,14 @@
 package com.zpache.pms.modules.user.controller;
 
 import com.zpache.pms.common.base.PmsResult;
+import com.zpache.pms.common.constant.PmsHeader;
 import com.zpache.pms.common.utils.ResultUtils;
 import com.zpache.pms.common.utils.TenantContextHolder;
 import com.zpache.pms.modules.user.dto.UserInfoDTO;
 import com.zpache.pms.modules.user.form.LoginForm;
 import com.zpache.pms.modules.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @desc:
@@ -45,10 +43,12 @@ public class LoginController {
 
     /**
      * 登出
+     *
      * @return 返回结果
      */
     @PostMapping(value = "/logout")
-    public PmsResult logout() {
+    public PmsResult logout(@RequestHeader(PmsHeader.TOKEN) String token) {
+        userService.logout(token);
         return ResultUtils.success();
     }
 }
